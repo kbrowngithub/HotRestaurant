@@ -47,3 +47,14 @@ app.get("/api/reservationArr", function(req, res) {
 app.get("/api/waitArr", function(req, res) {
     return res.json(waitArr);
   });
+
+app.post("/api/reservationArr", function(req, res) {
+    var newReservation = req.body;
+if(reservationArr.length < 5) {
+    reservationArr.push((newReservation));
+    res.json(true);
+} else {
+    waitArr.push(newReservation);
+    res.json(false);
+}
+});
