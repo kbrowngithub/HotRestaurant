@@ -42,4 +42,4 @@ app.get("/api/reservationArr", function(req, res) {
 
 app.get("/api/waitArr", function(req, res) {
     return res.json(waitArr);
-  });
+  });localStorage
