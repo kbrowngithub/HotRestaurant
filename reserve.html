@@ -19,9 +19,9 @@
             <h1>Hot Restaurant</h1>
             <h3>Make your reservation</h3>
             <hr>
-            <a href="home.html"><button><i class="fas fa-igloo"></i></button></a>
+            <a href="/"><button><i class="fas fa-igloo"></i></button></a>
 
-            <a href="tables.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
+            <a href="/tables"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
                     View Tables</button></a>
         </div>
 
@@ -65,10 +65,10 @@
           customerID: $("#id").val().trim()
         };
         $.post("/api/reservationArr", newReservation)
-        .then(function(data){
+         .then(function(data){
             console.log("reserve.html", data);
             alert("Yay your reservation has been made!")
-        })
+        });
     });
 
     </script>
