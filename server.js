@@ -28,9 +28,7 @@ var waitArr = [
   }
 ];
 
-app.get("/",function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
-  });
+
 
 app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
@@ -38,6 +36,10 @@ app.get("/tables", function(req, res) {
 
 app.get("/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
+  });
+
+  app.get("/",function(req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
   });
 
 app.get("/api/reservationArr", function(req, res) {
@@ -52,9 +54,9 @@ app.post("/api/reservationArr", function(req, res) {
     var newReservation = req.body;
 if(reservationArr.length < 5) {
     reservationArr.push((newReservation));
-    res.json(true);
+    res.send("You gots a table!");
 } else {
     waitArr.push(newReservation);
-    res.json(false);
+    res.send("No table for you!");
 }
 });

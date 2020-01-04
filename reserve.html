@@ -67,7 +67,12 @@
         $.post("/api/reservationArr", newReservation)
          .then(function(data){
             console.log("reserve.html", data);
+            console.log(newReservation);
             alert("Yay your reservation has been made!")
+            $("#name").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $("#id").val("");
         });
     });
 
