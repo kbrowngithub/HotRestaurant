@@ -22,37 +22,56 @@
             <a href="home.html"><button><i class="fas fa-igloo"></i></button></a>
 
             <a href="tables.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
-                   View Tables</button></a>
+                    View Tables</button></a>
         </div>
-    
-    <div class="card" style="width: 12;">
-        <div class="card-header">
-         Table Reservation
+
+        <div class="card" style="width: 12;">
+            <div class="card-header">
+                Table Reservation
+            </div>
+            <form>
+                <div class="form-group">
+                    <label  for="exampleFormControlSelect1">Name</label>
+                    <input id="name"class="form-control" type="text" placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Phone Number</label>
+                    <input id="phone" class="form-control" type="text" placeholder="Your Phone Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input id="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Unique ID</label>
+                    <input id="id" class="form-control" type="text" placeholder="">
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary mb-2">Submit</button>
+            </form>
         </div>
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Name</label>
-                <input class="form-control" type="text" placeholder="Your Name">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Phone Number</label>
-                <input class="form-control" type="text" placeholder="Your Phone Number">
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Unique ID</label>
-              <input class="form-control" type="text" placeholder="">
-            </div>
-          </form>
-      </div>
     </div>
 
+    <script type="text/javascript">
+
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
+        var newReservation = {
+          customerName: $("#name").val().trim(),
+          phoneNumber: $("#phone").val().trim(),
+          customerEmail: $("#email").val().trim(),
+          customerID: $("#id").val().trim()
+        };
+        $.post("/api/reservationArr", newReservation)
+        .then(function(data){
+            console.log("reserve.html", data);
+            alert("Yay your reservation has been made!")
+        })
+    });
+
+    </script>
 </body>
 
 </html>
